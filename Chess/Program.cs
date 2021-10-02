@@ -47,7 +47,7 @@ namespace Chess
 
         private static bool CheckMove(int x, int[,] field)
         {
-            List<int[]> myIndexes = new List<int[]>();
+                List<int[]> myIndexes = new List<int[]>();
                 List<int[]> enemyIndexes = new List<int[]>();
                 for (int i = 0; i < field.GetLength(0); i++)
                 {
@@ -73,25 +73,49 @@ namespace Chess
                     if (item[0] + 2 < field.GetLength(0) && item[1] + 2 < field.GetLength(1))
                     {
                        RD = new [] {item[0] + 1, item[1] + 1};
-                       possible.Add(RD);
+                       int[] lol = {item[0] + 2, item[1] + 2};
+                       int counter = 0;
+                       counter += myIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                       counter += enemyIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                       
+                       if (counter == 0)
+                           possible.Add(RD);
                     }
 
                     if (item[0] - 2 >= 0 && item[1] + 2 < field.GetLength(1))
                     {
                         LD = new [] {item[0] - 1, item[1] + 1};
-                        possible.Add(LD);
+                        int[] lol = {item[0] - 2, item[1] + 2};
+                        int counter = 0;
+                        counter += myIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                        counter += enemyIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                       
+                        if (counter == 0)
+                            possible.Add(LD);
                     }
 
                     if (item[0] - 2 >= 0 && item[1] - 2 >= 0)
                     {
                         LU = new [] {item[0] - 1, item[1] - 1};
-                        possible.Add(LU);
+                        int[] lol = {item[0] - 2, item[1] - 2};
+                        int counter = 0;
+                        counter += myIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                        counter += enemyIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                       
+                        if (counter == 0)
+                            possible.Add(LU);
                     }
 
                     if (item[0] + 2 < field.GetLength(0) && item[1] - 2 >= 0)
                     {
                         RU = new [] {item[0] + 1, item[1] - 1};
-                        possible.Add(RU);
+                        int[] lol = {item[0] + 2, item[1] - 2};
+                        int counter = 0;
+                        counter += myIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                        counter += enemyIndexes.Where(x => x.SequenceEqual(lol)).Count();
+                       
+                        if (counter == 0)
+                            possible.Add(RU);
                     }
 
                     for (int i = 0; i < enemyIndexes.Count; i++)
