@@ -44,7 +44,7 @@ namespace Chess
             }
             Console.WriteLine(canFight ? "Yes" : "No");
         }
-
+        //i was here
         private static bool CheckMove(int x, int[,] field)
         {
                 List<int[]> myIndexes = new List<int[]>();
